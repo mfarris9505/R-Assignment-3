@@ -1,0 +1,61 @@
+---
+title: "R Assignment 3"
+author: "Matthew Farris"
+date: "July 19, 2015"
+output: html_document
+---
+
+For this assignment, I used the following code to create a clearly defined data frame. 
+
+```{r}
+library(RCurl)
+x <- getURL("https://raw.githubusercontent.com/mfarris9505/DataMushroom/master/MushroomData%20-%20Sheet1%20(1).csv")
+
+
+Mushroom<- read.csv(text =x)
+headers <- c("Class", "CapShape","CapSurface", "CapColor","Bruises","Odor","GillAttachment", "GillSpacing","GillSize", "GillColor")
+names(Mushroom) <-headers
+
+Mushroom$Class <- as.character(Mushroom$Class)
+Mushroom$Class [Mushroom$Class == "p"] <- "Poisonous"
+Mushroom$Class [Mushroom$Class == "e"] <- "Edible"
+Mushroom$Class <- as.factor(Mushroom$Class)
+
+Mushroom$CapShape <- as.character(Mushroom$CapShape)
+Mushroom$CapShape [Mushroom$CapShape == "b"] <- "Bell"
+Mushroom$CapShape [Mushroom$CapShape == "c"] <- "Conical"
+Mushroom$CapShape [Mushroom$CapShape == "x"] <- "Conical"
+Mushroom$CapShape [Mushroom$CapShape == "f"] <- "Conical"
+Mushroom$CapShape [Mushroom$CapShape == "k"] <- "Conical"
+Mushroom$CapShape [Mushroom$CapShape == "s"] <- "sunken"
+Mushroom$CapShape <- as.factor(Mushroom$CapShape)
+
+Mushroom$CapSurface <- as.character(Mushroom$CapSurface)
+Mushroom$CapSurface [Mushroom$CapSurface == "f"] <- "Fibrous"
+Mushroom$CapSurface [Mushroom$CapSurface == "g"] <- "Grooves"
+Mushroom$CapSurface [Mushroom$CapSurface == "y"] <- "Scaly"
+Mushroom$CapSurface [Mushroom$CapSurface == "s"] <- "Smooth"
+Mushroom$CapSurface <- as.factor(Mushroom$CapSurface)
+
+Mushroom$CapColor <- as.character(Mushroom$CapColor)
+Mushroom$CapColor [Mushroom$CapColor == "n"] <- "Brown"
+Mushroom$CapColor [Mushroom$CapColor == "b"] <- "Buff"
+Mushroom$CapColor [Mushroom$CapColor == "c"] <- "Cinnamon"
+Mushroom$CapColor [Mushroom$CapColor == "g"] <- "Gray"
+Mushroom$CapColor [Mushroom$CapColor == "r"] <- "Green"
+Mushroom$CapColor [Mushroom$CapColor == "p"] <- "Pink"
+Mushroom$CapColor [Mushroom$CapColor == "u"] <- "Purple"
+Mushroom$CapColor [Mushroom$CapColor == "e"] <- "Red"
+Mushroom$CapColor [Mushroom$CapColor == "w"] <- "White"
+Mushroom$CapColor [Mushroom$CapColor == "y"] <- "Yellow"
+Mushroom$CapColor <- as.factor(Mushroom$CapColor)
+
+Mushroom$Bruises <- as.character(Mushroom$Bruises)
+Mushroom$Bruises [Mushroom$Bruises == "t"] <- "Bruises"
+Mushroom$Bruises [Mushroom$Bruises == "f"] <- "None"
+Mushroom$Bruises <- as.factor(Mushroom$Bruises)
+summary(Mushroom) 
+
+```
+
+
